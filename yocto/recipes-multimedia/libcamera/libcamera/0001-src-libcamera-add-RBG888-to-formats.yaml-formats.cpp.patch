@@ -1,0 +1,44 @@
+From 5eeeba5afc9e4bde5c7bf82eaa403e803cfc4524 Mon Sep 17 00:00:00 2001
+From: Mario Bergeron <grouby177@gmail.com>
+Date: Thu, 30 Jan 2025 15:27:42 +0000
+Subject: [PATCH] src/libcamera: add RBG888 to formats.yaml/formats.cpp.
+
+---
+ src/libcamera/formats.cpp  | 10 ++++++++++
+ src/libcamera/formats.yaml |  2 ++
+ 2 files changed, 12 insertions(+)
+
+diff --git a/src/libcamera/formats.cpp b/src/libcamera/formats.cpp
+index bfcdfc08..4718e9d6 100644
+--- a/src/libcamera/formats.cpp
++++ b/src/libcamera/formats.cpp
+@@ -179,6 +179,16 @@ const std::map<PixelFormat, PixelFormatInfo> pixelFormatInfo{
+ 		.pixelsPerGroup = 1,
+ 		.planes = {{ { 3, 1 }, { 0, 0 }, { 0, 0 } }},
+ 	} },
++	{ formats::RBG888, {
++		.name = "RBG888",
++		.format = formats::RBG888,
++		.v4l2Formats = { V4L2PixelFormat(V4L2_PIX_FMT_BGR24), },
++		.bitsPerPixel = 24,
++		.colourEncoding = PixelFormatInfo::ColourEncodingRGB,
++		.packed = false,
++		.pixelsPerGroup = 1,
++		.planes = {{ { 3, 1 }, { 0, 0 }, { 0, 0 } }},
++	} },
+ 	{ formats::RGB888, {
+ 		.name = "RGB888",
+ 		.format = formats::RGB888,
+diff --git a/src/libcamera/formats.yaml b/src/libcamera/formats.yaml
+index 2d54d391..e89d2c22 100644
+--- a/src/libcamera/formats.yaml
++++ b/src/libcamera/formats.yaml
+@@ -22,6 +22,8 @@ formats:
+ 
+   - RGB888:
+       fourcc: DRM_FORMAT_RGB888
++  - RBG888:
++      fourcc: DRM_FORMAT_RGB888
+   - BGR888:
+       fourcc: DRM_FORMAT_BGR888
+ 
